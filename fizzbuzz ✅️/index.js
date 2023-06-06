@@ -11,7 +11,21 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    let output
+    if (i % 3 == 0) {
+      output = "fizz"
+    }
+    if (i % 5 == 0) {
+      output = "buzz"
+    }
+    if (i % 3 == 0 && i % 5 == 0) {
+      output = "fizzbuzz"
+    }
+    console.log(output || i)
+  }
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \

@@ -1,13 +1,19 @@
-// Given an integer, return an integer with the digits
-// reversed.
+// Directions
+// Return a string with the order of characters reversed
 // --- Examples
-//   reverseInt(13) === 31
-//   reverseInt(404) === 404
-//   reverseInt(100) === 1
-//   reverseInt(-13) === -31
-//   reverseInt(-100) === -1
+//   reverse('abcd') === 'dcba'
+//   reverse('Hello!') === '!olleH'
 
-function reverseInt(n) {}
+function reverse(str) {
+	// *** Using array methods ***
+	// return str.split('').reverse().join('');
+
+	let output = ""
+	for (let i = str.length - 1; i >= 0; i--) {
+		output += str[i]
+	}
+	return output
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -32,23 +38,14 @@ function reverseInt(n) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup("bdd");
+mocha.setup('bdd');
 const { assert } = chai;
 
-describe("Integer Reversal", () => {
-  it("reverseInt() works on positive numbers", () => {
-    assert.equal(reverseInt(3), 3);
-    assert.equal(reverseInt(13), 31);
-    assert.equal(reverseInt(100), 1);
-    assert.equal(reverseInt(1408), 8041);
-  });
-
-  it("reverseInt() works on negative numbers numbers", () => {
-    assert.equal(reverseInt(-3), -3);
-    assert.equal(reverseInt(-13), -31);
-    assert.equal(reverseInt(-100), -1);
-    assert.equal(reverseInt(-1408), -8041);
-  });
+describe('String Reversal', () => {
+	it('reverse() correctly reverses string', () => {
+		assert.equal(reverse('ffaa'), 'aaff');
+		assert.equal(reverse('  aaff'), 'ffaa  ');
+	});
 });
 
 mocha.run();

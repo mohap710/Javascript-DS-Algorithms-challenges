@@ -1,10 +1,29 @@
-// Directions
-// Return a string with the order of characters reversed
+// Given an integer, return an integer with the digits
+// reversed.
 // --- Examples
-//   reverse('abcd') === 'dcba'
-//   reverse('Hello!') === '!olleH'
+//   reverseInt(13) === 31
+//   reverseInt(404) === 404
+//   reverseInt(100) === 1
+//   reverseInt(-13) === -31
+//   reverseInt(-100) === -1
 
-function reverse(str) {}
+function reverseInt(n) {
+  // using Built-in functions
+  // return parseInt(n.toString().split("").reverse().join("")) * Math.sign(n)
+
+  // Low-level solution
+  let result = 0, digit
+  while (n) {
+    // get the last digit and add it to result using %10 Ex: 123%10 = 3
+    digit = n % 10
+    result = (result * 10) + digit
+    // Remove the fractional part by using trunc ex:123/10 = 12.3 -> 12
+    n = Math.trunc(n / 10)
+    // or use => value | 0 "convert value to an integer"
+    // n = n / 10 | 0
+  }
+  return result
+}
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
 // \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
@@ -29,14 +48,23 @@ function reverse(str) {}
 //                          ______ ______ ______ ______ ______
 //                         |______|______|______|______|______|
 
-mocha.setup('bdd');
+mocha.setup("bdd");
 const { assert } = chai;
 
-describe('String Reversal', () => {
-	it('reverse() correctly reverses string', () => {
-		assert.equal(reverse('ffaa'), 'aaff');
-		assert.equal(reverse('  aaff'), 'ffaa  ');
-	});
+describe("Integer Reversal", () => {
+  it("reverseInt() works on positive numbers", () => {
+    assert.equal(reverseInt(3), 3);
+    assert.equal(reverseInt(13), 31);
+    assert.equal(reverseInt(100), 1);
+    assert.equal(reverseInt(1408), 8041);
+  });
+
+  it("reverseInt() works on negative numbers numbers", () => {
+    assert.equal(reverseInt(-3), -3);
+    assert.equal(reverseInt(-13), -31);
+    assert.equal(reverseInt(-100), -1);
+    assert.equal(reverseInt(-1408), -8041);
+  });
 });
 
 mocha.run();
