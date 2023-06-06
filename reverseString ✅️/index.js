@@ -5,14 +5,15 @@
 //   reverse('Hello!') === '!olleH'
 
 function reverse(str) {
-	// *** Using array methods ***
-	// return str.split('').reverse().join('');
-
-	let output = ""
-	for (let i = str.length - 1; i >= 0; i--) {
-		output += str[i]
+	left = 0
+	right = str.length - 1
+	str = str.split("")
+	while (right > left) {
+		[str[left], str[right]] = [str[right], str[left]]
+		left++
+		right--
 	}
-	return output
+	return str.join("");
 }
 
 // _________ _______  _______ _________   _______  _______  _______  _______  _______
